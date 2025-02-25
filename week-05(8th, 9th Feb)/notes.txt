@@ -1,5 +1,0 @@
-data structures in Js: Two types.
-how do we store the data in memory.
-1. primitive
-2. non-primitive
-

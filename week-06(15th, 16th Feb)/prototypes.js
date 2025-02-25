@@ -74,20 +74,23 @@ const lion = new Animal();
 //Ques perform inheritance w/o extends
 class A{
     getName(){
-        console.log("A");       
+        console.log("I'm class A");       
     }
 }
 
 class B{
-    str = "B";
+    constructor(){
+        this.str = "I'm variable B";
+    }
     // prototype = A;
 }
-Object.assign(B.prototype, A.prototype);
+Object.setPrototypeOf(B.prototype, A.prototype);
 const a = new A();
 const b = new B();
 a.getName();
 console.log(b.str);
 b.getName();
+console.log(Object.getPrototypeOf(b));
 
 
 
