@@ -29,11 +29,58 @@ let tasks = [
   ];
 
   const pendingTask = tasks.filter((task)=>!task.completed).sort((a, b)=> a.priority - b.priority);
-  console.log(pendingTask);
+//   console.log(pendingTask);
   
+
 //challenge-3: Return the avg. movie rating.
 let movieRatings = [
     { title: "Movie A", ratings: [4, 5, 3] },
     { title: "Movie B", ratings: [5, 5, 4] },
     { title: "Movie C", ratings: [3, 4, 2] },
-  ];
+];
+
+//lengthy approach
+// let moviesRatings = movieRatings.map((movie)=>{
+//     let sum = 0;
+//     let ratingLength = movie.ratings.length;
+//     for(let i=0; i<ratingLength; i++){
+//         sum += movie.ratings[i];
+//     }
+//     average = sum/ratingLength;
+//     return {
+//         ...movie,
+//         avgRating:average
+//     }
+// })
+// console.log(moviesRatings);
+
+
+//use reduce to find avg Rating
+let moviesRatings = movieRatings.map((movie)=>{
+    let sum = movie.ratings.reduce((acc, currvalue)=> acc + currvalue);
+    let average = (sum/movie.ratings.length).toFixed(2);
+    return {
+        ...movie,
+        ratings:average
+    }
+})
+// console.log(moviesRatings);
+// console.log(movieRatings);
+
+
+
+
+let person1 = {
+    personsName: "ravi",
+    greet: function () {
+      console.log(`Hello, ${this.personsName}`);
+    },
+  };
+  
+  let person2 = {
+    personsName: "hitesh",
+  };
+
+//   person1.greet.person2();
+person1.greet.call(person2);
+
