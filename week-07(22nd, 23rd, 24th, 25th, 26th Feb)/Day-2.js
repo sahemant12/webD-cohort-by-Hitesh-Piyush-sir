@@ -69,7 +69,6 @@ let moviesRatings = movieRatings.map((movie)=>{
 
 
 
-
 let person1 = {
     personsName: "ravi",
     greet: function () {
@@ -78,9 +77,14 @@ let person1 = {
   };
   
   let person2 = {
-    personsName: "hitesh",
+    personsName: "hitesh"
   };
+  // person1.greet(); //till here good
 
-//   person1.greet.person2();
-person1.greet.call(person2);
+  //can we change the context of person1. yes, How?
+  person1.greet.call(person2); //we want to change context ie why we use call. //not bind becoz bind return a new fn.
+  person1.greet.call({personsName: "hemant", age:21});
+
+
+
 
