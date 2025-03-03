@@ -1,1 +1,3 @@
 1. What is Currying?
+2. When revision will start from the begining then also write in your language along with teaching. Espically starvation.
+3. when html, css, Js is load? what is its sequence?
