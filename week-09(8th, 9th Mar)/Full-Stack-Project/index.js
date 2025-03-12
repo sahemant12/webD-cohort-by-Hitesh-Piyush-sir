@@ -3,6 +3,7 @@ import 'dotenv/config';
 import cors from "cors";
 import { db } from "./utils/db.js";
 import userRoutes from "./routes/user.routes.js";
+import cookieParser from "cookie-parser";
 
 const app = express();
 
@@ -14,7 +15,7 @@ app.use(cors({
 }));
 app.use(express.json()); //Accept json data from frontend/client
 app.use(express.urlencoded({extended:true})); //when accept data from url: %20(space), encode the url data
-
+app.use(cookieParser());
 
 const port = process.env.PORT || 8080;
 

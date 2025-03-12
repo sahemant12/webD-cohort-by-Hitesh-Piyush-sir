@@ -9,4 +9,14 @@
    in package.json scripts: write a script "start": "nodemon index.js" for using nodemon
    then run command: "npm run start", it will run the start script that start our server.
 
-5. 
+5. Zod, Yup: validation library
+
+6. Nodemailer: this library is use for sending mail.
+
+7. mailtrap: best for sending testing mail.
+
+8. Resend: best for sending real mail.
+
+9. clerk: use for authentication system.
+
+10. bcrypt: encrypt the password.

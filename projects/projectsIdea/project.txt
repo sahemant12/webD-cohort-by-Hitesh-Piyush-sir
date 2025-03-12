@@ -1,5 +1,5 @@
-Build a XMS. Make it really good that anyone can use it.
-Make it your best project.
+1. Build a XMS. Make it really good that anyone can use it. Make it your best project.
+2. Stream Chat*** Week-09 class-2
 
 1. 1st figure out what data you want to host. Then based on that data make features of it.
 2. 
