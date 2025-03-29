@@ -21,7 +21,7 @@ const port = process.env.PORT || 8080;
 
 app.get("/",(req, res)=>{
     // res.send("Hello! Ji"); //Sends any type of data (string, object, array, buffer), Automatically sets Content-Type based on the data type, Calls res.end() internally.
-    res.end("Hello! Ji"); //Only sends raw data (string, buffer, etc.), Does not automatically set Content-Type (default is text/plain), Cannot send objects or JSON directly.
+    res.end("Hey Hemant"); //Only sends raw data (string, buffer, etc.), Does not automatically set Content-Type (default is text/plain), Cannot send objects or JSON directly.
 });
 app.get("/hemant", (req, res)=>{
     res.send("Hemant Sah!");

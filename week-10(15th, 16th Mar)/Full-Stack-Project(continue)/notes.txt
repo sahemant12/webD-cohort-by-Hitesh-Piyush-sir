@@ -21,6 +21,8 @@
 
 10. bcrypt: encrypt the password.
 
+11. apiDog: alternative of postman
+
 
 neon 
 planetearth

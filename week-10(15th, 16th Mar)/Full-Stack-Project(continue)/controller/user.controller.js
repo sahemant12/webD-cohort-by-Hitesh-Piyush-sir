@@ -17,7 +17,6 @@ const registerUser = async (req, res) => {
     //send token as email to user
     // send success to user
 
-    try{
         const {name, email, password} = req.body;
 
         if(!name || !email || !password){
@@ -25,7 +24,8 @@ const registerUser = async (req, res) => {
                 message: "All fields are required"
             });
         };
-        
+
+    try{
         const user = await User.findOne({email});
         if(user){
             return res.status(400).json({
@@ -44,7 +44,8 @@ const registerUser = async (req, res) => {
         const token = crypto.randomBytes(32).toString("hex");
         newUser.verificationToken = token;
         await newUser.save();
-
+        console.log("User save");
+        
         //send mail
         const transporter = nodemailer.createTransport({
             host: process.env.MAILTRAP_HOST,
@@ -63,16 +64,17 @@ const registerUser = async (req, res) => {
             text: `Please click on following link: ${process.env.BASE_URL}/api/v1/users/verify/${token}
             `,
         }
-        const info = await transporter.sendMail(mailOption);
+        await transporter.sendMail(mailOption);
     
         res.status(201),json({
             message:"User registered successfully",
             success:true
         });
     
-    }catch(err){
+    }
+    catch(err){
         return res.status(400).json({
-            message: "User not register",
+            message: "User not register..",
             error:err,
             success:false
         });
@@ -80,6 +82,7 @@ const registerUser = async (req, res) => {
     
 
 };
+
 
 const verifyUser = async (req, res) => {
     //get token from user
@@ -92,6 +95,7 @@ const verifyUser = async (req, res) => {
 
     try{
         const {userToken} = req.params;
+        
         if(!userToken){
             return res.status(400).json({
                 message: "Invalid token",
@@ -120,6 +124,7 @@ const verifyUser = async (req, res) => {
     }
 };
 
+
 const login = async (req, res) => {
 
     const {email, password} = req.body;
@@ -144,26 +149,26 @@ const login = async (req, res) => {
             });
         };
 
-        const isMatch = await bcrypt.compare(password, user.password);
+        const isPsswordMatch = await bcrypt.compare(password, user.password);
 
 
-        if(!isMatch){
+        if(!isPsswordMatch){
             return res.status(400).json({
                 message: "Invalid email or password"
             });
         };
         //Now you can logIn
 
-        const token = jwt.sign({id: user._id, role: user.role}, "shhhhh", {
+        const token = jwt.sign({id: user._id, role: user.role, isVerified: user.isVerified}, process.env.JWT_SECRET, {
             expiresIn: "24h"
-        })
+        });
         const cookieOptions = {
             httpOnly: true,
             secure: true,
             maxAge: 24*60*60*1000
         }
 
-        res.cookie("test", token, cookieOptions);
+        res.cookie("token", token, cookieOptions);
         res.status(200).json({
             success: true,
             message: "Login successful",
@@ -184,4 +189,64 @@ const login = async (req, res) => {
     };
 };
 
-export {registerUser, verifyUser, login};
+const getMe = async (req, res) => {
+    try {
+        const data = req.user;
+        console.log("reached at profile level: ", data);
+        const user = await User.findById(data.id).select("-password");     
+        
+        if(!user){
+            return res.status(400).json({
+                message: "User not found",
+                success:false,
+
+            });
+        }
+
+        res.status(200).json({
+            success:true,
+            user
+        });
+
+    } catch (error) {
+        console.log(error);      
+    }
+}
+
+const logoutUser = async (req, res) => { //clear the cookies
+    try {
+        res.cookie("token", "", {
+            expires: new Date(0)
+        })
+        res.status(200).json({
+            success:true,
+            message: "Logged out successfully"
+        });
+
+    } catch (error) {
+        console.log(error);
+        {
+        error: error
+        }
+
+    }
+}
+
+const forgotPassword = async (req, res) => {
+    try {
+        //
+    } catch (error) {
+        
+    }
+}
+
+const resetPassword = async (req, res) => {
+    try {
+        //
+    } catch (error) {
+        
+    }
+}
+
+export {registerUser, verifyUser, login, getMe, logoutUser, forgotPassword, resetPassword};
+
