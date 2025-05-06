@@ -1,0 +1,14 @@
+//Let's Build a project:
+
+1. npm i express mongoose dotenv jsonwebtoken cookie-parser cors express-validator
+2. npm i --save-dev prettier
+3. new file: .prettierrc and .prettierignore
+4. mkdir db middlewares routes controllers models utils validators
+
+//Best docs to learn error handling: https://nodejs.org/api/errors.html
+// https://placehold.co/: A simple, fast and free image placeholder service.
+
+// healthcheck.controllers.js: tell us whether server is running or not.
+
+5. docker run --name mongodb -d -p 27017:27017 mongo
+6. for validation use: express-validator
