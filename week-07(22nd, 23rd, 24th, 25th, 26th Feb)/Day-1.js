@@ -3,14 +3,14 @@ let a = "100w";
 const convertNum1 = Number(a); //Best practice
 const convertNum2 = +a; //another way
 const convertNum3 = parseInt(a); //another way
-// console.log(convertNum1, convertNum2, convertNum3);
+// console.log(convertNum1, convertNum2, convertNum3); // NaN NaN 100
 
 
 
 const random = Math.random(); //random no. between [0,1)
 const floor = Math.floor(-6.9999); //give the floor value
 // console.log(random);
-// console.log(floor);
+// console.log(floor); // -7
 
 //generate random no. between 1 and 6
 const dice = random * 6; //give random no. between 0 and 5.99999  //Min: 0*6 = 0, Max: 0.999999*6 = 5.999994
@@ -115,7 +115,7 @@ const mostActive = userActivity.reduce((acc, currUser)=>{
     }  
     return acc;
 })
-console.log(mostActive);
+// console.log(mostActive);
 
 
 

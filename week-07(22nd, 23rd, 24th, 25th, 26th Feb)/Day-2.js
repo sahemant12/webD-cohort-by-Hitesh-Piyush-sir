@@ -6,84 +6,101 @@ let expenses = [
     {description: "Home", amount:500, category: "Rent"},
     {description: "Internet Bill", amount:50, category: "Utilities"},
 ]
-const foodExpense = expenses.reduce((expense, currExpense)=>{
-    //check if given category present in the arr or not. If true then add amount else create a new obj and add amount and return the expenseReport.
-    // if(expense[currExpense.category]){
-    //     expense[currExpense.category] += currExpense.amount;
-    // }else{   
-    //     expense[currExpense.category] = currExpense.amount;
-    // }
-    //much better way than above
-    expense[currExpense.category] = (expense[currExpense.category] || 0) + currExpense.amount;
-    return expense;
-},[])
 
-// console.log(foodExpense);
+
+const result = expenses.reduce((acc, currExpense)=>{
+    if(!acc[currExpense.category]){
+      acc[currExpense.category] = currExpense.amount;
+    }else{
+      acc[currExpense.category] = acc[currExpense.category] + currExpense.amount;
+    }
+}, []);
+
+
+
+// const result = expenses.reduce((acc, currExpense)=>{
+//     acc[currExpense.category] = (acc[currExpense.category] || 0) + 
+// }, []);
+
+
+// const foodExpense = expenses.reduce((expense, currExpense)=>{
+//     //check if given category present in the arr or not. If true then add amount else create a new obj and add amount and return the expenseReport.
+
+//     // if(expense[currExpense.category]){
+//     //     expense[currExpense.category] += currExpense.amount;
+//     // }else{   
+//     //     expense[currExpense.category] = currExpense.amount;
+//     // }
+//     //much better way than above
+//     expense[currExpense.category] = (expense[currExpense.category] || 0) + currExpense.amount;
+//     return expense;
+// },[])
+
+// // console.log(foodExpense);
 
 
 //challenge-2: Return all the tasks that are not completed and sort them.
-let tasks = [
-    { description: "Write report", completed: false, priority: 2 },
-    { description: "Send email", completed: true, priority: 3 },
-    { description: "Prepare presentation", completed: false, priority: 1 },
-  ];
-
-  const pendingTask = tasks.filter((task)=>!task.completed).sort((a, b)=> a.priority - b.priority);
-//   console.log(pendingTask);
+// let tasks = [
+//     { description: "Write report", completed: false, priority: 2 },
+//     { description: "Send email", completed: true, priority: 3 },
+//     { description: "Prepare presentation", completed: false, priority: 1 },
+//   ];
+//   const pendingTask = tasks.filter((task)=>!task.completed).sort((a, b)=> a.priority - b.priority);
+// //   console.log(pendingTask);
   
 
 //challenge-3: Return the avg. movie rating.
-let movieRatings = [
-    { title: "Movie A", ratings: [4, 5, 3] },
-    { title: "Movie B", ratings: [5, 5, 4] },
-    { title: "Movie C", ratings: [3, 4, 2] },
-];
+// let movieRatings = [
+//     { title: "Movie A", ratings: [4, 5, 3] },
+//     { title: "Movie B", ratings: [5, 5, 4] },
+//     { title: "Movie C", ratings: [3, 4, 2] },
+// ];
 
-//lengthy approach
+// //lengthy approach
+// // let moviesRatings = movieRatings.map((movie)=>{
+// //     let sum = 0;
+// //     let ratingLength = movie.ratings.length;
+// //     for(let i=0; i<ratingLength; i++){
+// //         sum += movie.ratings[i];
+// //     }
+// //     average = sum/ratingLength;
+// //     return {
+// //         ...movie,
+// //         avgRating:average
+// //     }
+// // })
+// // console.log(moviesRatings);
+
+
+// //use reduce to find avg Rating
 // let moviesRatings = movieRatings.map((movie)=>{
-//     let sum = 0;
-//     let ratingLength = movie.ratings.length;
-//     for(let i=0; i<ratingLength; i++){
-//         sum += movie.ratings[i];
-//     }
-//     average = sum/ratingLength;
+//     let sum = movie.ratings.reduce((acc, currvalue)=> acc + currvalue);
+//     let average = (sum/movie.ratings.length).toFixed(2);
 //     return {
 //         ...movie,
-//         avgRating:average
+//         ratings:average
 //     }
 // })
-// console.log(moviesRatings);
-
-
-//use reduce to find avg Rating
-let moviesRatings = movieRatings.map((movie)=>{
-    let sum = movie.ratings.reduce((acc, currvalue)=> acc + currvalue);
-    let average = (sum/movie.ratings.length).toFixed(2);
-    return {
-        ...movie,
-        ratings:average
-    }
-})
-// console.log(moviesRatings);
-// console.log(movieRatings);
+// // console.log(moviesRatings);
+// // console.log(movieRatings);
 
 
 
-let person1 = {
-    personsName: "ravi",
-    greet: function () {
-      console.log(`Hello, ${this.personsName}`);
-    },
-  };
+// let person1 = {
+//     personsName: "ravi",
+//     greet: function () {
+//       console.log(`Hello, ${this.personsName}`);
+//     },
+//   };
   
-  let person2 = {
-    personsName: "hitesh"
-  };
-  // person1.greet(); //till here good
+//   let person2 = {
+//     personsName: "hitesh"
+//   };
+//   // person1.greet(); //till here good
 
-  //can we change the context of person1. yes, How?
-  person1.greet.call(person2); //we want to change context ie why we use call. //not bind becoz bind return a new fn.
-  person1.greet.call({personsName: "hemant", age:21});
+//   //can we change the context of person1. yes, How?
+//   person1.greet.call(person2); //we want to change context ie why we use call. //not bind becoz bind return a new fn.
+//   person1.greet.call({personsName: "hemant", age:21});
 
 
 

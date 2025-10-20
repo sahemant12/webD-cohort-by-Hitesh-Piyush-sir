@@ -69,7 +69,7 @@ console.log("START THE PROGRAM");
 
 // const fsv2 = require("fs/promises");
 
-// ----------------- Moden Code ---------------------
+// ----------------- Modern Code ---------------------
 // const result = fsv2.readFile("./Day-4-hello.txt", 'utf-8'); //result will be pending(promise)
 // result
 //     .then((content)=>{
@@ -171,3 +171,7 @@ async function registerUser(){
     sendEmail();
     sendPushNotification();
 }
+
+registerUser()
+.then(() => console.log("Done"))
+.catch(() => console.log("Something went wrong"))

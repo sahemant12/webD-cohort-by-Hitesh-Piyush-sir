@@ -1,5 +1,5 @@
 1. npm init: initialized project
-2. to check about version: semver.org
+2. to check about version: server.org
 
 3. if use require(): for importing file then in package.json make "type": "commonjs"
    if use import then in package.json make "type": "module"

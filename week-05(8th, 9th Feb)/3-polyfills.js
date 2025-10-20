@@ -27,7 +27,3 @@ if(!Array.prototype.fill){
     }
 }
 
-//forEach
-//
-
-

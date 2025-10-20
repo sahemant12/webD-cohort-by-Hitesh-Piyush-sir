@@ -12,5 +12,4 @@ router.post("/register", registerUser)
       .post("/forgotPassword", forgotPassword)
       .post("/resetPassword/:token", resetPassword)
 
-//userprofile, forgot password, reset password, logout, 
 export default router;

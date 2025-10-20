@@ -9,7 +9,7 @@ function getvalue(arr, index){
     }
     return arr[index];
 }
-// console.log(getvalue(arr, 25)); //Not this way. Get the answer by calling this: console.log(arr[-1]);
+// console.log(getvalue(arr, -1)); //Not this way. Get the answer by calling this: console.log(arr[-1]);
 //we can do this by proxy: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy
 //proxy: It allow us to create an object that can be used in place of the original object, but we can redefine original object operations like getting, setting, and other properties.
 
