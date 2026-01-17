@@ -66,7 +66,7 @@ const registerUser = async (req, res) => {
         }
         await transporter.sendMail(mailOption);
     
-        res.status(201),json({
+        res.status(201).json({
             message:"User registered successfully",
             success:true
         });
@@ -149,7 +149,6 @@ const login = async (req, res) => {
         };
 
         const isPsswordMatch = await bcrypt.compare(password, user.password);
-
 
         if(!isPsswordMatch){
             return res.status(400).json({

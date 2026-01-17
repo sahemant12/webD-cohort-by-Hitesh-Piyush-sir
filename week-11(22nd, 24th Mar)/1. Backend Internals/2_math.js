@@ -6,16 +6,14 @@ function sub(a, b){
     return a-b;
 }
 
-// exports.sum = sum;
-// exports.subtract = sub;
-
 //default export
 module.exports = function(){
     return "this is from default export"
 }
 
-//Things to understand
-//1. export with fn
-//2. module.exports
-//3. exports.sum = sum;
-//4. {}
+// named export
+exports.sum = sum;
+exports.subtract = sub;
+
+// NOTE: always default export will run. If default export not present then named export will work.
+
