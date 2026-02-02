@@ -12,9 +12,6 @@ app.use(cors({
     allowedHeaders: ["Content-Type", "Authorization"]
 }));
 
-app.get("/hello", (req, res)=>{
-    res.send("Hello")
-})
 app.use("/api/v1/healthcheck", healthcheckRouter);
 
 

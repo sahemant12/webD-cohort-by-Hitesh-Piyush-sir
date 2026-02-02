@@ -7,3 +7,5 @@ const asyncHandler = (requestHandler) => {
 }
 
 export {asyncHandler};
+// This code helps us to not use try catch every where.
+

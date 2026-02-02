@@ -1,7 +1,7 @@
 //Let's Build a project:
 
 1. npm i express mongoose dotenv jsonwebtoken cookie-parser cors express-validator
-2. npm i --save-dev prettier
+2. npm i --save-dev prettier // to make standard indentation
 3. new file: .prettierrc and .prettierignore
 4. mkdir db middlewares routes controllers models utils validators
 
@@ -9,6 +9,26 @@
 // https://placehold.co/: A simple, fast and free image placeholder service.
 
 // healthcheck.controllers.js: tell us whether server is running or not.
+// Every project should have healthcheck controllers that check whether server is up running or not.
 
-5. docker run --name mongodb -d -p 27017:27017 mongo
+5. docker run --name mongodb -d -p 27017:27017 mongo // to run mongodb locally without installion
 6. for validation use: express-validator
+
+=============================================================================================
+// Approach to build backend
+
+1. Make all the folder and files.
+2. connect db and start server('app' files for server and 'db' files for db) in index.js file. Make healthCheck router/controllers for checking server running or not.
+3. Now, the 1st thing is to standarized the error.
+
+// Error handling-approach
+1. make api-error file and extends class and write your custom error.
+2. for custom response make api-response file and write your custom reponse.
+3. Then, write CONSTANTS file
+4. Then, write async-handler
+
+4. Then, write(design) all the model.
+5. Then, pre definied model methods(mongoose)
+6. Then, connect docker
+7. Do express-validator stuff
+8. Then, make sendMail() methods: use Nodemailer, mailtrap, mailgen

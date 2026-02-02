@@ -6,6 +6,9 @@ export const UserRolesEnum = {
 };
 
 export const AvailableUserRoles = Object.values(UserRolesEnum);
+// console.log(AvailableUserRoles); // [ 'admin', 'project_admin', 'member' ]
+// datatype of 'AvailableUserRoles' is array.
+
 
 export const TaskStatusEnum = {
     TODO: "todo",

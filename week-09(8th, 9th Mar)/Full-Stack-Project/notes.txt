@@ -19,7 +19,6 @@
 
 9. clerk: use for authentication system.
 
-10. bcrypt: encrypt the password.
 
 
 neon 

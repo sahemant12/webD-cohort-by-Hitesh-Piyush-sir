@@ -2,13 +2,13 @@ import mongoose, {Schema} from "mongoose";
 
 const projectNoteSchema = new Schema({
     project: {
-         type: Schema.Types.ObjectId,
-         ref: "Project",
+         type: Schema.Types.ObjectId, // ...
+         ref: "Project", // Project mean "Project" model
          required: true
     },
     createdBy: {
         type: Schema.Types.ObjectId,
-        ref: "User",
+        ref: "User", // User mean "User" model
         required: true
     },
     content: {

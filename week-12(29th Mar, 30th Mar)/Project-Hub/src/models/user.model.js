@@ -59,16 +59,19 @@ const userSchema = new Schema({
 
 }, {timestamps: true});
 
-userSchema.pre("save", async function(next){
-    if(!this.isModified("password")) return next();
-    this.password = await bcrypt.hash(this.password, 10);
-    next();
+// hash the password
+userSchema.pre("save", async function(){
+    if(this.isModified("password")){
+        this.password = await bcrypt.hash(this.password, 10);
+    }
 });
 
-userSchema.methods.isPasswordCorrect = async function(password){
+// checking password before Login
+userSchema.methods.isPasswordCorrect = async function(password){ // defining my Method. Mongoose give this functionality too.
     return await bcrypt.compare(this.password, password);
 };
 
+// generate access token
 userSchema.methods.generateAccessToken = function(){
     return jwt.sign(
         {
@@ -81,6 +84,7 @@ userSchema.methods.generateAccessToken = function(){
     );
 };
 
+// generate refresh token
 userSchema.methods.generateRefreshToken = function(){
     return jwt.sign(
         {
@@ -91,14 +95,15 @@ userSchema.methods.generateRefreshToken = function(){
     );
 };
 
+// generate temporary token(use for email verification)
 userSchema.methods.generateTemporaryToken = function(){
     const unHashedToken = crypto.randomBytes(32).toString("hex");
 
-    const hashedToken = crypto.createHash("sha256").update(unHashedToken).digest("hex");
+    const hashedToken = crypto.createHash("sha256").update(unHashedToken).digest("hex"); // syntax
     const tokenExpiry = Date.now() + 20*60*1000;
     return {unHashedToken, hashedToken, tokenExpiry};
 }
-
+// just fun stuff. keep hashedtoken in DB but send unHashed token to user.
 
 export const User = mongoose.model("User", userSchema);
 
