@@ -32,3 +32,5 @@
 6. Then, connect docker
 7. Do express-validator stuff
 8. Then, make sendMail() methods: use Nodemailer, mailtrap, mailgen
+9. Then, do fileupload stuff.
+10. Then, write controllers/routes of all the files.
