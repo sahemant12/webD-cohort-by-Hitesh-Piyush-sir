@@ -68,7 +68,7 @@ userSchema.pre("save", async function(){
 
 // checking password before Login
 userSchema.methods.isPasswordCorrect = async function(password){ // defining my Method. Mongoose give this functionality too.
-    return await bcrypt.compare(this.password, password);
+    return await bcrypt.compare(password, this.password);
 };
 
 // generate access token
@@ -107,3 +107,16 @@ userSchema.methods.generateTemporaryToken = function(){
 
 export const User = mongoose.model("User", userSchema);
 
+// Flow of access & refresh token
+
+// Access token:
+// An access token is a short-lived token used to authenticate a user and access protected resources.
+
+// Refresh token:
+// A refresh token is a long-lived token used to generate a new access token when the old one expires.
+
+// Flow:
+// 1. User login.
+// 2. Server creates access and refresh token and send to client. Refresh token is often stored in DB.
+// 3. Access token expires → Client sends refresh token → server verifies refresh token → Server issues New access token and send to client.
+// 4. User continue sending APIs without logout.

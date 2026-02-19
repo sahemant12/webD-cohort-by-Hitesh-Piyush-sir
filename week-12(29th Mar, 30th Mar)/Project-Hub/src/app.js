@@ -8,11 +8,10 @@ const app = express();
 app.use(cors({
     origin: process.env.CORS_ORIGIN,
     credentials:true,
-    method: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"]
 }));
 
 app.use("/api/v1/healthcheck", healthcheckRouter);
-
 
 export default app;
