@@ -26,7 +26,7 @@
 2. for custom response make api-response file and write your custom reponse.
 3. Then, write CONSTANTS file
 4. Then, write async-handler
-
+ 
 4. Then, write(design) all the model.
 5. Then, pre definied model methods(mongoose)
 6. Then, connect docker
